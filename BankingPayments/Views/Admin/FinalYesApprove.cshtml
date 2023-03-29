@@ -4,46 +4,46 @@
     <div class="container p-3">
         <div class="row pt-4">
             <div class="col-6">
-                <h2 class="text-primary">Approved Page</h2>
+                <h2 class="text-primary">Approve Page</h2>
                 <hr />
-            </div>
+                          </div>
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="PaymentInstrNo" class="form-control" hidden></label>
                 <input asp-for="PaymentInstrNo" class="form-control" hidden />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="BillerId" class="form-control" hidden></label>
                 <input asp-for="PaymentInstrNo" class="form-control" hidden />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="RecurringInstr" class="form-control" hidden></label>
                 <input asp-for="RecurringInstr" class="form-control" hidden />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="LastProcessedDate" class="form-control" hidden></label>
                 <input asp-for="LastProcessedDate" class="form-control" hidden />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="date"></label>
                 <input disabled asp-for="date" class="form-control" readonly />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="AccountNo"></label>
                 <input disabled asp-for="AccountNo" class="form-control" readonly />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="Amount"></label>
                 <input disabled asp-for="Amount" class="form-control" readonly />
             </div>
-            <div class="mb-3">
+            <div class="mb-1">
                 <label asp-for="AccountBalance"></label>
                 <input disabled asp-for="AccountBalance" class="form-control" readonly />
             </div>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary" style="width:25%">Approve</button>
-            <a asp-controller="Admin" asp-action="ApprovePayments" class="btn btn-secondary" style="width:25%">
+            <a asp-controller="Admin" asp-action="ApprovePayments" class="btn btn-success" style="width:25%">
                 Cancel
             </a>
         </div>

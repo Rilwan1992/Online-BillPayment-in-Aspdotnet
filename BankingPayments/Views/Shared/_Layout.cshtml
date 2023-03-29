@@ -30,17 +30,20 @@
                          @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link active" asp-controller="Admin" asp-action="ApprovePayments">Approve Payments</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" asp-controller="Admin" asp-action="AllCategory">Manage Category</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link active" asp-controller="Admin" asp-action="Registration">New User Registration</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" asp-controller="Admin" asp-action="GetAllRoles">All Roles</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-controller="Admin" asp-action="AllCategory">Manage Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-controller="Admin" asp-action="ApprovePayments">Approve Payments</a>
+                            </li>
+                            
+                           
+                           
                         }
 
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
