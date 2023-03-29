@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BankingPayments.Models.ApprovePayments.PaymentModel>
+
+<br />
+<br/>
+<div class="col-6">
+    <h2 class="text-primary"> View Payment History</h2>
+</div>
+<form method="post" action="@Url.Action("ViewPayment")">
+   
+    <div class="form-group">
+        <label> From Date</label><br />
+        <input name ="FromDate" type="date" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label> To Date</label><br />
+        <input name ="ToDate" type="date" class="form-control" />
+        <h5>@ViewBag.ErrorMessege</h5>
+    </div>
+    <br />
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a class="btn btn-primary" asp-action="Index" asp-controller="Customer">
+            Cancel
+        </a>
+    </div>
+
+</form>
+
+<div class="form-group">
+    @if (ViewBag.Payment!=null)
+    {
+        <div>
+            <table class="table table-bordered table-striped" style="width:100%">
+                <tr>
+                    <th width="20%">
+                        Date
+                    </th>
+                    <th width="20%">
+                        Ac No
+                    </th>
+                    <th width="20%">
+                        Biller
+                    </th>
+                    <th width="20%">
+                        Amount
+                    </th>
+                    <th width="20%">
+                        Category
+                    </th>
+                </tr>
+                @{
+                    var data = ViewData["Paymentdata"];
+                }
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <th width="20%">@obj.PaymentDate</th>
+                        <th width="20%">@obj.AccountNo</th>
+                        <th width="20%">@obj.BillerInfoModel.BillerName</th>
+                        <th width="20%">@obj.Amount</th>
+                        <th width="20%">@obj.CategoryModel.CategoryDesc</th>
+                    </tr>
+                }
+                
+       
+    </table>
+    </div>
+    }
+    else if (ViewBag.Payment == null)
+    {
+        <br />
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>No Payment created</h5>
+            </div>
+        </div>
+    }
+</div>
+

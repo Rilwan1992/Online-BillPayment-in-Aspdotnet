@@ -1,0 +1,32 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "LogIn";
+}
+@{
+    var returnUrl = Context.Request.Query["/Customer/Index"];
+}
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label class="form-label mt-4" asp-for="UserName"></label>
+        <input asp-for="UserName" type="text" class="form-control-plaintext" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <br />
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label" asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <br />
+    <div class="form-group">
+        <label class="col-sm-2 col-form-label" asp-for="RememberMe">
+            <input asp-for="RememberMe" class="form-check-input " /> @Html.DisplayNameFor(m=> m.RememberMe)
+        </label>
+    </div>
+    
+    <button type="submit" class="btn btn-dark" asp-route-returnUrl="/Customer/Index">Login</button>
+    
+
+</form>

@@ -1,0 +1,57 @@
+﻿@model EditViewModel
+
+@{
+    ViewBag.Title = "Edit Role";
+}
+<h1>Edit Role</h1>  
+<form method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Id" disabled class="form-control" />
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="RoleName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="RoleName"  class="form-control" />
+            <span asp-validation-for="RoleName" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-primary" asp-action="GetAllRoles" asp-controller="Admin"> Cancel </a>
+
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">
+            <h3>Users in this role</h3>
+        </div>
+        <div class="card-body">
+            @if (Model.Users.Any())
+            {
+                foreach(var user in Model.Users)
+                {
+                    <h5 class="card-title">@user</h5>
+                }
+            }
+            else
+            {
+                <h4>None at the moment</h4>
+            }
+        </div>
+        <div class="card-footer">
+            <a asp-action="EditUserinRoles" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-primary" style="width:auto">Add Users in Role</a>
+            <a asp-action="DeleteUserinRole" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-primary" style="width:auto">Delete Users in Role</a>
+            <a asp-action="GetAllRoles" asp-controller="Admin" class="btn btn-primary">Cancel</a>
+
+
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PaymentInstrModel>
+@{
+    var AcNo = ViewBag.AccountNo;
+    
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> All ManagePayments</h2>
+        </div>
+        @if (Model.Any())
+        {
+            <div class="col-6 text-end">
+                <a class="btn btn-primary mb-3" style="width:auto" asp-controller="Customer" asp-action="AddManagePayment" asp-route-id="@AcNo">
+                    Add Payment
+                </a>
+            </div>
+            <hr />
+            <div>
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <tr>
+                        <th width="20%">
+                            Biller
+                        </th>
+                        <th width="20%">
+                            Date
+                        </th>
+                        <th width="20%">
+                            Amount
+                        </th>
+                        <th width="20%">
+                            Reapeat?
+                        </th>
+                    </tr>
+
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <th width="20%">@Html.DisplayFor(modelItem=>obj.BillerInfoModel.BillerName)</th>
+                            <th width="20%">@obj.PaymentDueDate</th>
+                            <th width="20%">@Html.DisplayFor(modelItem=>obj.Amount)</th>
+                            <th width="20%">@Html.DisplayFor(modelItem=>obj.RecurringInstr)</th>
+
+
+
+                            <th>
+                                <a asp-controller="Customer" asp-action="EditManagePayment" asp-route-id="@obj.PaymentInstrNo"
+                                   class="btn btn-primary" width="30%">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+
+                                <a asp-controller="Customer" asp-action="DeleteManagePayment" asp-route-id="@obj.PaymentInstrNo"
+                                   class="btn btn-danger" width="30%">
+                                    <i class="bi bi-trash3-fill"></i> Delete
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>No Payment created</h5>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary mb-3" style="width:auto" asp-controller="Customer" asp-action="AddManagePayment" asp-route-id="@AcNo">
+                        Create New Payment
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

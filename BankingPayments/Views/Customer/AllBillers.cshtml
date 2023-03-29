@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BillerInfoModel>
+@{
+    string Id = ViewBag.CustomerId;
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> All Billers</h2>
+        </div>
+        @if (Model.Any())
+        {
+            <div class="col-6 text-end">
+                <a class="btn btn-primary mb-3" style="width:auto" asp-action="AddBiller" asp-controller="Customer" asp-route-id="@Id">
+                    Add Biller
+                </a>
+            </div>
+            <hr />
+            <div>
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <tr>
+                        <th width="20%">
+                            Biller Name
+                            </th>
+                        <th width="20%">
+                            Address
+                        </th>
+                        <th width="20%">
+                            Category
+                        </th>
+                    </tr>
+
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <th width="20%">@Html.DisplayFor(modelItem=>obj.BillerName)</th>
+                            <th width="20%">@obj.Address</th>
+                            <th width="20%">@obj.CategoryModel.CategoryDesc</th>
+
+
+                            <th width="20%">
+                                <a asp-controller="Customer" asp-action="EditBiller" asp-route-id="@obj.BillerId"
+                                   class="btn btn-primary" width="30%">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>No Biller created</h5>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary mb-3" style="width:auto" asp-action="AddBiller" asp-controller="Customer" asp-route-id="@Id">
+                        Create New Biller
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+

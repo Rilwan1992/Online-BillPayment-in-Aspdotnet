@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CategoryModel>
+
+@{
+    ViewData["Title"] = " All Categories";
+}
+
+@if (TempData["success"] != null)
+{
+    <h2> @TempData["success"] </h2>
+}
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> All Categories</h2>
+        </div>
+        @if (Model.Any())
+        {
+            <div class="col-6 text-end">
+                <a class="btn btn-primary mb-3" style="width:auto" asp-action="AddCategory" asp-controller="Admin">
+                    Add a Category
+                </a> 
+            </div>
+            <hr />
+            <div>
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <tr>
+                        <th width="20%">
+                            Category Id
+                        </th>
+                        <th width="20%">
+                            Category Name
+                        </th>
+                    </tr>
+
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <th width="20%">@obj.CategoryId</th>
+                            <th width="20%">@obj.CategoryDesc</th>
+
+                            <th>
+                                <a asp-controller="Admin" asp-action="EditCategory" asp-route-id="@obj.CategoryId"
+                                class="btn btn-primary" width="30%">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+
+                                <a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@obj.CategoryId"
+                                    class="btn btn-danger" width="30%">
+                                    <i class="bi bi-trash3-fill"></i> Delete
+                                </a>
+                            </th>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>No Roles created</h5>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary mb-3" style="width:auto" asp-action="AddCategory" asp-controller="Admin">
+                        Create New Category
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+

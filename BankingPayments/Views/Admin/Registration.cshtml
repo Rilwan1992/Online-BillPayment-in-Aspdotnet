@@ -1,0 +1,41 @@
+﻿@model Registration
+
+@{
+    ViewBag.Title = "New Customer Registration";
+}
+
+<h1>@ViewBag.Title</h1>
+<form method="post">
+   @* <input hidden asp-for ="Id" />*@
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="CustomerName"></label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+    <br />
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control"/>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <br />
+@*    <div class="form-group">
+        <label asp-for="BillPayRegistered"> BillPay Registered</label>
+        <input type="radio" asp-for="BillPayRegistered" class="form-check-input " value="Y" /> 
+        <label class="form-check-label" asp-for="BillPayRegistered">Yes</label>
+        <input type="radio" asp-for="BillPayRegistered" class="form-check-input " value="N" />
+        <label class="form-check-label" asp-for="BillPayRegistered">No</label>
+        <span asp-validation-for="BillPayRegistered" class="text-danger"></span>
+    </div>*@
+    <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>

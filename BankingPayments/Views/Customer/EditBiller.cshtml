@@ -1,0 +1,54 @@
+﻿@model EditBillerViewModel
+
+<h1>Edit Biller</h1>
+<form method="post">
+    <div class="mb-3">
+        <input asp-for="BillerId" hidden class="form-control" />
+    </div>
+    
+    <div asp-validation-summary="All" class="text-danger"></div> 
+    <div class="form-group">
+        <label asp-for="BillerName"></label><br />
+        <input asp-for="BillerName" class="form-control" />
+        <span asp-validation-for="BillerName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address"></label><br />
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="City "></label><br />
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Pin"></label><br />
+        <input asp-for="Pin" class="form-control" />
+        <span asp-validation-for="Pin" class="text-danger"></span>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label asp-for="Status">Status</label>
+        <input type="radio" asp-for="Status" class="form-check-input " value=1 />Yes
+        <input type="radio" asp-for="Status" class="form-check-input " value=2 />No
+
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model=>model.CategoryId,"Category",htmlAttributes:new{@class="control-label-col-md-2"})
+
+        @(Html.DropDownListFor(x => x.CategoryId, ViewBag.CategoryId as SelectList, "--Select Category--", new { @class = "form-control" }))
+        <br />
+        @Html.ValidationMessageFor(x => x.CategoryId)
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a class="btn btn-primary" asp-action="AllBillers" asp-controller="Customer">
+        Cancel
+    </a>
+</form>
+

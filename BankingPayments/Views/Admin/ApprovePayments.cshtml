@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PaymentInstrModel>
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Approve Payments</h2>
+        </div>
+        @if (Model.Any())
+        {
+            <div>
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <tr>
+                        <th width="20%">
+                            Date
+                        </th>
+                        <th width="20%">
+                            Account 
+                        </th>
+                        <th width="20%">
+                            Biller
+                        </th>
+                        <th width="20%">
+                            Amount
+                        </th>
+                        <th width="20%">
+                            Account Balance
+                        </th>
+                        <th width="40%">
+                            Approve?
+                        </th>
+                    </tr>
+
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <th width="20%">
+                                @obj.PaymentDueDate
+                            </th>
+                            <th width="20%">
+                                @obj.AccountNo
+                            </th>
+                            <th width="20%">
+                                @obj.BillerInfoModel.BillerName
+                            </th>
+                            <th width="20%">
+                                @obj.Amount
+                            </th>
+                            <th width="20%">
+                                @obj.AccountModel.AccountBalance
+                            </th>
+                            <th>
+                                <a asp-controller="Admin" asp-action="FinalYesApprove" asp-route-id="@obj.PaymentInstrNo" class="btn btn-primary" width="30%">
+                                     Yes
+                                </a>
+                                <a asp-controller="Admin" asp-action="FinalNoApprove" asp-route-id="@obj.PaymentInstrNo" class="btn btn-danger" width="30%">
+                                     No
+                                </a>
+                            </th>
+                            </tr>
+
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>No Recent Payment created</h5>
+                </div>
+                
+            </div>
+        }
+    </div>
+</div>
+

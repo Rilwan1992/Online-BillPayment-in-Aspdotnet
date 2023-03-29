@@ -1,0 +1,9 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+@{
+    ViewBag.Title = "Admin Index";
+}
+
+<h1>@ViewBag.Title</h1>
+
+
+<h2>welcome  @User.Identity.Name </h2>

@@ -1,0 +1,26 @@
+﻿@model CategoryEditViewModel
+
+<form method="post" >
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Edit Category</h2>
+                <hr />
+            </div>
+            <div class="mb-3">                
+                <input asp-for="CategoryId" hidden class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoryDesc"></label>
+                <input asp-for="CategoryDesc" class="form-control" />
+            </div>
+        </div>
+        <div class="text-center">
+                <button type="submit" class="btn btn-primary" style="width:25%">Update</button>
+                <a asp-controller="Admin" asp-action="AllCategory" class="btn btn-secondary" style="width:25%">
+                    Cancel
+                </a>
+        </div>
+    </div>
+   
+</form>

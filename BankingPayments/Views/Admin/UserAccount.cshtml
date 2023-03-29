@@ -1,0 +1,33 @@
+﻿@model AddAccountViewModel
+@{
+    
+    string Id = ViewBag.CustomerId;
+}
+
+<h1>User Account</h1>
+<form method="post">
+    <label hidden asp-for="@Id">CustomerId</label>
+    <input  hidden asp-for="@Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+  
+    <div class="form-group">
+        <label asp-for="AcType">Account Type</label>
+        <input type="radio" asp-for="AcType" class="form-check-input " value=1 />Savings
+        <input type="radio" asp-for="AcType" class="form-check-input " value=2 />Current
+
+        <span asp-validation-for="AcType" class="text-danger"></span>
+    </div>
+    <br />
+        <div class="form-group">
+        <label asp-for="AccountBalance"></label>
+        <input asp-for="AccountBalance" class="form-control"/>
+        <span asp-validation-for="AccountBalance" class="text-danger"></span>
+        </div>
+        <br />
+   
+   
+    <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
