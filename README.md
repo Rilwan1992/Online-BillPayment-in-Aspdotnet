@@ -15,7 +15,7 @@ Features
 
 3. Bill payer allows set up of payments in advance as well as set up of automatic payments.
 
-4. Categories will be assigned to each biller based on common indeustry categories, such as "Mortgage","Utitlies", or "Telephone".
+4. Categories will be assigned to each biller based on common industry categories, such as "Mortgage","Utilities", or "Telephone".
 
 5. It takes few seconds of the transaction of payment of bills.
 
